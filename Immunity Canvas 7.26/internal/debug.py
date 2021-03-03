@@ -37,7 +37,6 @@ from . import colors
 _debug_initialized = False
 
 if __debug__:
-    
     _debug_separator = "::"
     _debug_level_negator_char = '!'
     _debug_level_ignore_char = '#'
@@ -79,12 +78,14 @@ if __debug__:
                 global debug_threads
                 debug_threads = True
 
+
 def add_debug_level(klevel):
     if __debug__:
         if type(klevel) != type([]):
             klevel = [klevel]
         for level in klevel:
             _add_debug_level(level)
+
 
 def debug_init():
     if __debug__:
@@ -95,9 +96,11 @@ def debug_init():
             for level in debug_levels:
                 logging.display("logging level: %s" % level, color=colors.GREEN)
 
+
 def force_debug_level(klevel): # XXX check here, do we force?
     if __debug__:
         add_debug_level(level)
+
 
 def isdebug(level):
     if __debug__:
@@ -125,6 +128,7 @@ def isdebug(level):
             if testlevel in splitlevels:
                 return True
     return False
+
 
 # log msg for dev ppl
 # if fp is passed it should be an open writeable file
@@ -160,6 +164,7 @@ def devlog(level, msg = None, color = colors.RED, desc = None, nodesc = False, n
         
         logging.display("%s%s" % (desc, msg), color=color)
 
+
 # exec code for dev ppl
 def devexec(level, code = None):
     if __debug__:
@@ -176,6 +181,7 @@ def devexec(level, code = None):
         if isdebug(level):
             exec code
             # TODO return value ?
+
 
 # assert for dev ppl
 def devassert(level, condition, expression=None, exception=AssertionError):
@@ -194,11 +200,13 @@ def devassert(level, condition, expression=None, exception=AssertionError):
             else:
                 raise exception
 
+
 def backtrace(exit=False, limit=None, file=None):
     import traceback
     traceback.print_stack(limit=limit, file=file)
     if exit:
         raise SystemExit
+
 
 if __name__ == "__main__":
     devlog('all', "logging in yellow is gay", colors.YELLOW)

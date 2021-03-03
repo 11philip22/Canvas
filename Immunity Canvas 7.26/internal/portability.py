@@ -27,11 +27,14 @@ def deprecate(message = None, file = sys.stderr):
     debug.devlog("DEPRECATED code: %s" % deprecated_code)
     #warnings.warn(message, DeprecationWarning, stacklevel=3)
 
+
 def warnings_safely_ignore(category):
     warnings.filterwarnings('ignore', category=category)
 
+
 def warning_restore():
     warnings.resetwarnings()
+
 
 def _test():
     def popo():

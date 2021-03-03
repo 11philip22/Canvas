@@ -4,12 +4,14 @@ from .debug import devlog
 
 _threadutils_threads_pool = []
 
+
 def threadutils_add(thread):
     global _threadutils_threads_pool
     devlog('threadutils_add', "adding thread %s to thread pool" % thread.getName())
     if thread.isDaemon():
         devlog('threadutils_add', "thread %s IS daemon" % thread.getName())
     _threadutils_threads_pool.append(thread)
+
 
 def threadutils_del(thread, timeout=10):
     global _threadutils_threads_pool
@@ -38,11 +40,13 @@ def threadutils_del(thread, timeout=10):
     if thread in _threadutils_threads_pool:
         _threadutils_threads_pool.remove(thread)
 
+
 def threadutils_exiting(thread):
     global _threadutils_threads_pool
     devlog('threadutils_exiting', "thread %s exiting" % thread.getName())
     if thread in _threadutils_threads_pool:
         _threadutils_threads_pool.remove(thread)
+
 
 def threadutils_cleanup():
     global _threadutils_threads_pool
