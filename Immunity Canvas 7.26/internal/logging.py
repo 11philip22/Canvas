@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 
 import sys, os
-import colors
-import debug
+from . import colors
+from . import debug
 
 logging_initialized = False
 

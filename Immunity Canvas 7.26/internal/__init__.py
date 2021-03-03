@@ -38,13 +38,13 @@ __all__ = [
     'systemapi',
 ]
 
-import logging
-import debug
-import uniqlist
-import path
-import portability
-from threadutils import *
-import PySystemAPI
+from . import logging
+from . import debug
+from . import uniqlist
+from . import path
+from . import portability
+from .threadutils import *
+from . import PySystemAPI
 
 logging.logging_init()
 debug.debug_init()

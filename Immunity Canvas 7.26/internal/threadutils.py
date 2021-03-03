@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from debug import devlog
+from .debug import devlog
 
 _threadutils_threads_pool = []
 

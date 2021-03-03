@@ -32,7 +32,7 @@ if os.path.exists(__debug_output):
     debug_output = open(__debug_output, "ab")
 
 import logging
-import colors
+from . import colors
 
 _debug_initialized = False
 

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import os, sys
-import debug
+from . import debug
 
 def PythonVersion():
     try:

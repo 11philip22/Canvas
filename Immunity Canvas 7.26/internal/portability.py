@@ -3,7 +3,8 @@
 import sys
 import traceback
 import warnings
-import debug
+from . import debug
+
 
 def deprecate(message = None, file = sys.stderr):
     """ warn when a deprecated function is called """

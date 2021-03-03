@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 
 import os, sys
-import debug
-from uniqlist import uniqlist
+from . import debug
+from .uniqlist import uniqlist
 
 def pathstr(path):
     if len(path):
