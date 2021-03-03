@@ -179,7 +179,7 @@ def devexec(level, code = None):
             level = "all"
         
         if isdebug(level):
-            exec code
+            exec(code)
             # TODO return value ?
 
 
