@@ -8,4 +8,4 @@
 __all__ = ['config', "http_mosdef", "fWrap", "features"]
 
 global CanvasConfig
-from config import CanvasConfig
+from .config import CanvasConfig
