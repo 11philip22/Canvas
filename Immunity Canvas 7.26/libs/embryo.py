@@ -87,15 +87,15 @@ if platform.system() == "Darwin":
 class DefaultEmbryo(object):
     def message_box(self, text, title, cancel_button):
         import textwrap
-        print '\n'.join(textwrap.wrap('%s: %s' % (title, text)))
+        print('\n'.join(textwrap.wrap('%s: %s' % (title, text))))
         if cancel_button:
-            print
-            print 'Press Enter to continue, or Ctrl+C to cancel.',
+            print()
+            print('Press Enter to continue, or Ctrl+C to cancel.',)
             try:
-                raw_input()
+                input()
                 return True
             except KeyboardInterrupt:
-                print
+                print()
                 return False
 
     def open_url(self, url):

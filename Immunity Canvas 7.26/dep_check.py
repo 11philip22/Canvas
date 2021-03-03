@@ -18,6 +18,7 @@ REQ_MOD     = { "darwin": ["gtk", "gobject", "cairo", "gtk.glade", "pyasn1", "Cr
                 "win32":  ["gtk", "gobject", "cairo", "gtk.glade", "pyasn1", "Crypto", "bcrypt", "nacl"],
                 "linux2": ["gtk", "gobject", "cairo", "gtk.glade", "pyasn1", "Crypto", "bcrypt", "nacl"],
                 "linux3": ["gtk", "gobject", "cairo", "gtk.glade", "pyasn1", "Crypto", "bcrypt", "nacl"],
+                "linux":  ["gtk", "gobject", "cairo", "gtk.glade", "pyasn1", "Crypto", "bcrypt", "nacl"],
               }
 
 #TODO Optional modules ??
@@ -27,6 +28,7 @@ REQ_PY       = { "darwin": [[2,5],[2,6],[2,7]],
                  "win32":  [[2,5],[2,6],[2,7]],
                  "linux2": [[2,5],[2,6],[2,7]],
                  "linux3": [[2,5],[2,6],[2,7]],
+                 "linux":  [[3,8]]
                }
 
 
@@ -94,14 +96,14 @@ class DependencyCheck:
             except:
                 canvas_ver = "Unavailable"
 
-            print "\n[EE] Serious error, please make sure core Python is installed correctly\n"
-            print "Please contact us at support@immunityinc.com for further assistance\nquoting the following:\n\n"
+            print("\n[EE] Serious error, please make sure core Python is installed correctly\n")
+            print("Please contact us at support@immunityinc.com for further assistance\nquoting the following:\n\n")
             try:
                 import traceback
                 traceback.print_exc()
             except:
                 logging.error("Traceback Module unavailable")
-            print "\nSystem: %s\nPython: %s\nCANVAS: %s\n" % (sys.platform, sys.version.replace("\n",""), canvas_ver)
+            print("\nSystem: %s\nPython: %s\nCANVAS: %s\n" % (sys.platform, sys.version.replace("\n",""), canvas_ver))
             return False
 
         ##Was OK pressed? - if so browse to the URL
@@ -117,6 +119,7 @@ class DependencyCheck:
                 ##Something went wrong!
                 ##(on linux likely browser env var not set) Notify user
                 response = embryo.message_box(
+                # todo: find reverence to url
                 'The web browser could not be opened, please browse to %s for further assistance'%(URL),
                 title='%s Dependency Checker'%(PROJ_NAME),
                 cancel_button=False)
@@ -212,7 +215,6 @@ class DependencyCheck:
         else:
             logging.info("dep_check passed: All dependencies satisfied")
             return True
-
 
     def check_python(self):
         """
