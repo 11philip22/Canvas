@@ -39,10 +39,9 @@ import sys
 sys.path += ['.']
 from internal import devlog
 
-from types import DictType
 import re
 
-class _CanvasConfig(DictType):
+class _CanvasConfig(dict):
     """
     Contains the CANVAS configuration information for our engine
     """
@@ -71,8 +70,8 @@ class _CanvasConfig(DictType):
     operator_uuid             =
     """
 
-    def __init__(self, argv = None):
-        DictType.clear(self)
+    def __init__(self, argv=None):
+        dict.clear(self)
 
         # first of all we load default CANVAS config (at the top of that file)
         for line in self.__default_config.split('\n'):
@@ -87,12 +86,12 @@ class _CanvasConfig(DictType):
     def __setitem__(self, name, val):
         if type(val) == type("") and val.lower() in ['no', 'false']:
             val = False
-        DictType.__setitem__(self, name, val)
+        dict.__setitem__(self, name, val)
 
     def load_configfile(self, filename = ConfigFile):
         devlog('Config::ParseFile', "parsing file %s" % filename)
         try:
-            fd = file(filename)
+            fd = open(filename)
         except IOError:
             #failed to open CANVAS.conf
             print("Could not open CANVAS.conf!")
@@ -155,13 +154,13 @@ class _CanvasConfig(DictType):
         name = kargs[0]
         if type(name) == type(()):
             name, value = name[:2]
-        if DictType.__contains__(self, name):
-            value = DictType.__getitem__(self, name)
+        if dict.__contains__(self, name):
+            value = dict.__getitem__(self, name)
         devlog('Config::GetItem', "%s = %s" % (name, value))
         return value
 
     def __str__(self):
-        return "<CANVAS Config instance %s>" % DictType.__repr__(self)
+        return "<CANVAS Config instance %s>" % dict.__repr__(self)
 
 global CanvasConfig
 CanvasConfig = _CanvasConfig()
