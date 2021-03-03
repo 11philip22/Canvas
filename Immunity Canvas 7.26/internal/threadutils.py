@@ -34,7 +34,7 @@ def threadutils_del(thread, timeout=10):
     else:
         devlog('threadutils_del', "trying to join thread")
         thread.join(timeout)
-    print "[T] %s exited" % name
+    print("[T] %s exited" % name)
     if thread in _threadutils_threads_pool:
         _threadutils_threads_pool.remove(thread)
 

@@ -96,7 +96,7 @@ else:
                 f = open(dst, 'w')
                 f.writelines(patched)
                 f.close()
-        except Exception, err:
+        except Exception as err:
             #print err
             #print '[+] could not set paths in %s' % filename
             return False

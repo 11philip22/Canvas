@@ -43,13 +43,13 @@ def SystemAPI():
         return void()
 
 if __name__ == '__main__':
-    print "OS:", OSVersion()
-    print "Machine:", MachineVersion()
+    print("OS:", OSVersion())
+    print("Machine:", MachineVersion())
     maj, min, micro = PythonVersion()
     systemapi = SystemAPI()
-    print systemapi
-    print "DIR:", dir(systemapi)
+    print(systemapi)
+    print("DIR:", dir(systemapi))
     #for m in dir(systemapi):
     #    print "%s is %s: %s" % (m, type(getattr(systemapi, m)), getattr(systemapi, m))
-    print "done."
+    print("done.")
 

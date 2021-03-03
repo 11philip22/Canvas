@@ -95,7 +95,7 @@ class _CanvasConfig(DictType):
             fd = file(filename)
         except IOError:
             #failed to open CANVAS.conf
-            print "Could not open CANVAS.conf!"
+            print("Could not open CANVAS.conf!")
             return
         for line in fd.readlines():
             self.__parse_configline(line, 'Config::ParseFile')
@@ -176,10 +176,10 @@ if __name__ == "__main__":
     add_debug_level(['Config::ParseArgv', 'Config::ParseFile'])
     config = CanvasConfig
     config.parse_argv("--no-sniffer --username=maradona --uid=123 --broadcast")
-    print config
-    print repr(config)
-    print config['sniffer']
-    print config['sniffer', True]
-    print config['uhuh', 42]
-    print config['timestamps']
+    print(config)
+    print(repr(config))
+    print(config['sniffer'])
+    print(config['sniffer', True])
+    print(config['uhuh', 42])
+    print(config['timestamps'])
 

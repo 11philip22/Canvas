@@ -29,7 +29,7 @@ global debug_output
 debug_output = None
 
 if os.path.exists(__debug_output):
-    debug_output = file(__debug_output, "ab")
+    debug_output = open(__debug_output, "ab")
 
 import logging
 import colors
@@ -190,7 +190,7 @@ def devassert(level, condition, expression=None, exception=AssertionError):
             devlog(level, "Assertion Error! raising %s..." % exception)
             if expression:
                 devlog(level, "ASSERTION> %s" % expression)
-                raise exception, expression
+                raise exception(expression)
             else:
                 raise exception
 
@@ -206,7 +206,7 @@ if __name__ == "__main__":
     try:
         devassert('all', 2 < 1, "dev assert test", OverflowError)
     except OverflowError:
-        print "OverflowError! (correct)"
+        print("OverflowError! (correct)")
     #except:
     #    print "smth broken here"
     add_debug_level('test1')
@@ -217,4 +217,4 @@ if __name__ == "__main__":
     devlog('test3', "test3")
     devlog('test4', "test4")
     
-    print "tests done."
+    print("tests done.")

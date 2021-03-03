@@ -35,15 +35,16 @@ def warning_restore():
 def _test():
     def popo():
         deprecate("testing deprecate()")
-        print "popo"
+        print("popo")
 
     def x():
-        print "x"
+        print("x")
         popo()
 
-    print "1"
+    print("1")
     x()
-    print "2"
+    print("2")
+
 
 if __name__ == "__main__":
     _test()
